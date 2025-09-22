@@ -1,7 +1,9 @@
 # Projeto-L-gico-Com-Consultas-SQL
 > Este projeto é um espaço para a continuação do desafio em que foi criado um MR de um e-commerce, desta vez, será criado tabelas correspondentes ao modelo e consultas serão realizadas.
+
 > Os arquivos disponíveis para download: "Criando-Tabela", "Inserindo-Dados-Tabela" e "Consultas-SQL", estão com os códigos utilizados para a execução do desafio, e para os interessados, também está comentado.
-> Obs: Os dados apresentados são fictícios.
+
+_Obs: Os dados apresentados são fictícios._
 
 Ferramentas utilizadas:
 
@@ -10,7 +12,7 @@ Ferramentas utilizadas:
 ----
 Primeiro foi criado o banco de dados e as tabelas seguindo este MR, não irei colocar todas as tabelas que foram criadas para esse relatório se tornar o mais simples possível
 
-![MR-E-commmerce]()
+![MR-E-commmerce](https://github.com/mariaefoliveira/Projeto-Logico-Com-Consultas-SQL/blob/main/Images/MR-E-commerce.png?raw=true)
 
 ### Criando Banco de Dados
 `CREATE database Ecommerce;
@@ -49,7 +51,7 @@ JOIN Pedido_has_Produtos AS php ON p.idProdutos = php.idProdutos
 GROUP BY p.idProdutos
 ORDER BY QuantidadeTotalVendida DESC;`
 
-![Consulta1]()
+![Consulta1](https://github.com/mariaefoliveira/Projeto-Logico-Com-Consultas-SQL/blob/main/Images/Consulta-1-Qtd-prod-vendida.png?raw=true)
 
 ### Categorias de produtos que têm um estoque total superior a 50 unidades
 `SELECT p.Categoria, SUM(ehp.Quantidade) AS QuantidadeTotal
@@ -58,7 +60,9 @@ JOIN Estoque_has_Produtos AS ehp ON p.idProdutos = ehp.idProdutos
 GROUP BY p.Categoria
 HAVING QuantidadeTotal > 50;`
 
-![Consulta2]()
+_Having foi utilizado para fazer uma filtragem em cima do agrupamento_
+
+![Consulta2](https://github.com/mariaefoliveira/Projeto-Logico-Com-Consultas-SQL/blob/main/Images/Consulta-2-Catprod-total-estoque.png?raw=true)
 
 ### Fornecedores e a quantidade de produtos fornecidas
 `SELECT pj.NomeDaEmpresa AS NomeFornecedor, COUNT(php.idProdutos) AS QuantidadeDeProdutosFornecidos
@@ -67,7 +71,7 @@ JOIN Produtos_has_Pessoa AS php ON pj.CNPJ = php.CNPJ
 GROUP BY pj.CNPJ
 ORDER BY QuantidadeDeProdutosFornecidos DESC;`
 
-![Consulta3]()
+![Consulta3](https://github.com/mariaefoliveira/Projeto-Logico-Com-Consultas-SQL/blob/main/Images/Consulta-3-fornecedores-total-fornecido.png?raw=true)
 
 ### Itens comprados por clientes específicos
 `SELECT p.Nome AS NomeProduto, php.Quantidade
@@ -77,5 +81,5 @@ JOIN Pedido_has_Produtos AS php ON pd.idPedido = php.idPedido
 JOIN Produtos AS p ON php.idProdutos = p.idProdutos
 WHERE c.CPF = '11122233344';`
 
-![Consulta4]()
+![Consulta4](https://github.com/mariaefoliveira/Projeto-Logico-Com-Consultas-SQL/blob/main/Images/Consulta-4-Itens-Comprados-por-cliente-espec%C3%ADfico.png?raw=true)
 
